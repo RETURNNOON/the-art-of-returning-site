@@ -189,6 +189,44 @@ images.forEach((filename) => {
   img.alt = "RETURNNOON visual journal";
   gallery.appendChild(img);
 });
+
+  const lightbox = document.createElement("div");
+
+lightbox.style.cssText = `
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 24, 22, 0.94);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  cursor: zoom-out;
+`;
+
+const enlargedImage = document.createElement("img");
+
+enlargedImage.style.cssText = `
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+`;
+
+lightbox.appendChild(enlargedImage);
+document.body.appendChild(lightbox);
+
+gallery.querySelectorAll("img").forEach((img) => {
+  img.style.cursor = "zoom-in";
+
+  img.addEventListener("click", () => {
+    enlargedImage.src = img.src;
+    lightbox.style.display = "flex";
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
 </script>
 
 </body>
