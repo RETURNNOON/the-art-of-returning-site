@@ -2,86 +2,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Art of Returning</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Returning | RETURNNOON</title>
+<style>
+* { box-sizing: border-box; scroll-behavior: smooth; }
 
-    body {
-      margin: 0;
-      background: #f5f1e9;
-      color: #4d493f;
-      font-family: Georgia, serif;
-    }
+body {
+  margin: 0;
+  background: #f5f1e9;
+  color: #4d493f;
+  font-family: Georgia, serif;
+}
 
-    header {
-      padding: 28px 8%;
-      text-align: center;
-      letter-spacing: 3px;
-      font-size: 12px;
-    }
+header {
+  padding: 24px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e3dbcf;
+}
 
-    main {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 24px;
-    }
+.logo {
+  font-size: 13px;
+  letter-spacing: 4px;
+}
 
-    h1 {
-      font-size: clamp(38px, 7vw, 72px);
-      font-weight: normal;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
+nav a {
+  color: #70685d;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 13px;
+}
 
-    p {
-      font-size: 17px;
-      line-height: 1.9;
-      color: #81796c;
-    }
+nav a:hover { color: #a38d70; }
 
-    .line {
-      width: 50px;
-      height: 1px;
-      background: #b7a994;
-      margin: 30px auto;
-    }
+section {
+  padding: 90px 8%;
+  text-align: center;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 12px;
-      color: #9b9182;
-      letter-spacing: 2px;
-    }
-  </style>
+.hero {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: clamp(38px, 7vw, 72px);
+  font-weight: normal;
+  margin: 0 0 20px;
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 25px;
+}
+
+.line {
+  width: 50px;
+  height: 1px;
+  background: #b7a994;
+  margin: 25px auto;
+}
+
+p {
+  color: #81796c;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.about {
+  background: #eee8dd;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.gallery-grid img:nth-child(2) {
+  margin-top: 35px;
+}
+
+footer {
+  padding: 35px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #9b9182;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  nav a { margin: 0 10px; }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid img:nth-child(2) {
+    margin-top: 0;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    RETURNNOON
-  </header>
+<header>
+  <div class="logo">RETURNNOON</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
+</header>
 
-  <main>
-    <h1>The Art of Returning</h1>
-    <div class="line"></div>
-    <p>
-      A Private Visual Journal
-      <br>
-      A quiet space to return to yourself.
-    </p>
-  </main>
+<section class="hero" id="home">
+  <h1>The Art of Returning</h1>
+  <div class="line"></div>
+  <p>
+    A Private Visual Journal<br>
+    A quiet space to return to yourself.
+  </p>
+</section>
 
-  <footer>
-    WITHIN · ALWAYS
-  </footer>
+<section class="about" id="about">
+  <h2>About</h2>
+  <div class="line"></div>
+  <p>
+    The Art of Returning is a quiet journey<br>
+    through art, memories, and moments of life.<br>
+    <br>
+    A place to slow down.<br>
+    A place to feel.<br>
+    A place to return to yourself.
+  </p>
+</section>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="line"></div>
+  <p>A collection of quiet moments and beautiful things.</p>
+
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=700" alt="Morning landscape">
+    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700" alt="Quiet lake">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700" alt="Forest">
+  </div>
+</section>
+
+<footer>
+  WITHIN · ALWAYS
+  <p>© RETURNNOON</p>
+</footer>
 
 </body>
 </html>
