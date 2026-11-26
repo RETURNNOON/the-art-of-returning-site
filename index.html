@@ -227,6 +227,73 @@ gallery.querySelectorAll("img").forEach((img) => {
 lightbox.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
+  
+let currentImageIndex = 0;
+
+const galleryImages = Array.from(
+  gallery.querySelectorAll("img")
+);
+
+const prevButton = document.createElement("button");
+prevButton.textContent = "‹";
+const nextButton = document.createElement("button");
+nextButton.textContent = "›";
+const closeButton = document.createElement("button");
+closeButton.textContent = "×";
+
+[prevButton, nextButton, closeButton].forEach((button) => {
+  button.style.cssText = `
+    position: absolute;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 42px;
+    cursor: pointer;
+    padding: 15px;
+  `;
+});
+
+prevButton.style.left = "20px";
+nextButton.style.right = "20px";
+closeButton.style.top = "10px";
+closeButton.style.right = "20px";
+
+lightbox.append(prevButton, nextButton, closeButton);
+
+function showImage(index) {
+  currentImageIndex =
+    (index + galleryImages.length) % galleryImages.length;
+  enlargedImage.src = galleryImages[currentImageIndex].src;
+}
+
+galleryImages.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    showImage(index);
+  });
+});
+
+prevButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+  showImage(currentImageIndex - 1);
+});
+
+nextButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+  showImage(currentImageIndex + 1);
+});
+
+closeButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+  lightbox.style.display = "none";
+});
+
+document.addEventListener("keydown", (event) => {
+  if (lightbox.style.display !== "flex") return;
+
+  if (event.key === "ArrowLeft") showImage(currentImageIndex - 1);
+  if (event.key === "ArrowRight") showImage(currentImageIndex + 1);
+  if (event.key === "Escape") lightbox.style.display = "none";
+});
 </script>
 
 </body>
