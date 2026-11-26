@@ -4,295 +4,559 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171613">
 <title>RETURNNOON — The Art of Returning</title>
+
 <style>
+:root {
+  --ivory: #f3efe6;
+  --black: #171613;
+  --red: #8f2025;
+  --gold: #b69a61;
+  --muted: #817969;
+}
+
 * { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  background: #f3efe6;
-  color: #49463f;
+  background: var(--ivory);
+  color: #39352e;
   font-family: Georgia, serif;
 }
+
 header {
   text-align: center;
-  padding: 65px 20px 30px;
+  padding: 95px 20px 75px;
 }
+
 h1 {
-  font-size: 42px;
+  font-size: clamp(36px, 6vw, 65px);
   font-weight: normal;
-  letter-spacing: 8px;
+  letter-spacing: 12px;
+  margin: 0;
 }
+
 .subtitle {
-  letter-spacing: 4px;
   font-size: 11px;
+  letter-spacing: 5px;
+  margin-top: 18px;
 }
+
 .tagline {
+  color: var(--muted);
   font-style: italic;
-  margin-top: 28px;
-  color: #827968;
+  margin-top: 35px;
+  letter-spacing: 1px;
 }
+
+header p:last-child {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 30px;
-  padding: 25px;
+  gap: 32px;
+  padding: 23px 15px;
   border-top: 1px solid #ded6c9;
   border-bottom: 1px solid #ded6c9;
+  position: sticky;
+  top: 0;
+  background: rgba(243,239,230,.96);
+  z-index: 10;
 }
+
 nav a {
   color: #49463f;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 2px;
 }
+
+nav a:hover { color: var(--red); }
+
 section {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: auto;
-  padding: 75px 25px;
+  padding: 95px 30px;
 }
+
 h2 {
   text-align: center;
+  font-size: 25px;
   font-weight: normal;
-  letter-spacing: 4px;
-  margin-bottom: 35px;
+  letter-spacing: 5px;
+  margin-bottom: 38px;
 }
+
+.eyebrow {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
 .intro {
   text-align: center;
-  line-height: 2;
-  max-width: 600px;
+  max-width: 650px;
+  margin: auto;
+  line-height: 2.2;
+  font-size: 14px;
+}
+
+.hero {
+  background: var(--black);
+  color: var(--ivory);
+  text-align: center;
+  padding: 110px 25px;
+}
+
+.hero h2 {
+  font-size: clamp(26px, 4vw, 43px);
+  letter-spacing: 7px;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  color: #c5bca9;
+  line-height: 2.2;
+  font-size: 13px;
+  max-width: 650px;
   margin: auto;
 }
+
+.gold-line {
+  width: 55px;
+  height: 1px;
+  background: var(--gold);
+  margin: 35px auto;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 22px;
+  margin-top: 45px;
 }
+
+.gallery-item { cursor: zoom-in; }
+
 .gallery img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  display: block;
   background: #ded6c9;
+  transition: opacity .35s, transform .5s;
 }
+
+.gallery-item:hover img {
+  opacity: .85;
+  transform: translateY(-4px);
+}
+
 .caption {
   text-align: center;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin: 12px 0 25px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin: 15px 0 10px;
+  color: var(--muted);
 }
-footer {
+
+.colors {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin-top: 45px;
+}
+
+.color-card {
+  padding: 40px 22px;
   text-align: center;
-  padding: 50px 20px;
-  border-top: 1px solid #ded6c9;
-  font-size: 12px;
-  letter-spacing: 2px;
+  min-height: 250px;
 }
-@media(max-width:650px) {
-  .gallery { grid-template-columns: repeat(2, 1fr); }
-  h1 { font-size: 29px; }
+
+.color-card.black {
+  background: #191816;
+  color: #f3efe6;
+}
+
+.color-card.red {
+  background: #84252a;
+  color: white;
+}
+
+.color-card.gold {
+  background: #b69a61;
+  color: #201d17;
+}
+
+.color-card h3 {
+  font-size: 23px;
+  letter-spacing: 4px;
+  font-weight: normal;
+}
+
+.color-card p {
+  font-size: 12px;
+  line-height: 2;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 45px;
+  margin-top: 45px;
+}
+
+.story {
+  border-top: 1px solid #cfc4b2;
+  padding-top: 22px;
+}
+
+.story h3 {
+  font-weight: normal;
+  letter-spacing: 3px;
+  color: var(--red);
+}
+
+.story p {
+  font-size: 13px;
+  line-height: 2.2;
+}
+
+.manifesto {
+  background: #e8e0d2;
+  padding: 75px 25px;
+  text-align: center;
+}
+
+.manifesto h2 {
+  line-height: 1.8;
+  color: var(--red);
+}
+
+.manifesto p {
+  font-style: italic;
+  line-height: 2;
+  color: var(--muted);
+}
+
+footer {
+  background: var(--black);
+  color: var(--ivory);
+  text-align: center;
+  padding: 55px 20px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  line-height: 2.5;
+}
+
+/* IMAGE VIEWER */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15,14,12,.96);
+  justify-content: center;
+  align-items: center;
+  padding: 55px;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox img {
+  max-width: 85%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.lightbox button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 42px;
+  cursor: pointer;
+  padding: 15px;
+}
+
+#prev { left: 15px; top: 45%; }
+#next { right: 15px; top: 45%; }
+#close { right: 20px; top: 5px; }
+
+@media(max-width:700px) {
+  header { padding: 65px 15px; }
+  h1 { letter-spacing: 6px; }
+  nav { gap: 17px; }
+  section { padding: 65px 18px; }
+  .gallery { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .colors { grid-template-columns: 1fr; }
+  .story-grid { grid-template-columns: 1fr; }
+  .lightbox { padding: 25px; }
+  .lightbox img { max-width: 95%; }
 }
 </style>
 </head>
+
 <body>
 
-<header>
+<header id="home">
 <h1>RETURNNOON</h1>
 <div class="subtitle">THE ART OF RETURNING</div>
-<p class="tagline">A Private Visual Journal</p>
-<p>A quiet space to return to yourself.</p>
+<p class="tagline">Rooted in Heritage. Connected by Love.</p>
+<p>A quiet space for art, memories and human connection.</p>
 </header>
 
 <nav>
 <a href="#home">HOME</a>
 <a href="#about">ABOUT</a>
+<a href="#philosophy">PHILOSOPHY</a>
 <a href="#gallery">GALLERY</a>
 <a href="#journal">JOURNAL</a>
-<a href="#contact">CONTACT</a>
 </nav>
 
-<section id="home">
-<div class="intro">
-<h2>WELCOME TO RETURNNOON</h2>
-A quiet space for art, memories, reflection and the beauty of being.
+<div class="hero">
+<div class="eyebrow">THE ART OF RETURNING</div>
+<h2>BLACK. RED. GOLD.</h2>
+<div class="gold-line"></div>
+<p>
+The Ground. The Pulse. The Light.
+<br><br>
+Come together. Share the warmth.
+Exchange the energy. Return renewed.
+</p>
 </div>
-</section>
 
 <section id="about">
-<h2>ABOUT</h2>
+<div class="eyebrow">OUR STORY</div>
+<h2>ABOUT RETURNNOON</h2>
 <div class="intro">
-The Art of Returning is a quiet journey
-through art, memories, and moments of life.
+The Art of Returning is a journey through heritage,
+fashion, art, memories and the beauty of being human.
 <br><br>
 A place to slow down.<br>
-A place to feel.<br>
+A place to reconnect.<br>
 A place to return to yourself.
 </div>
 </section>
 
-<section id="gallery">
-<h2>GALLERY</h2>
-<div class="intro">
-A collection of quiet moments and beautiful things.
+<section id="philosophy">
+<div class="eyebrow">A PHILOSOPHY OF FOUR POWERS</div>
+<h2>THE LANGUAGE OF COLOURS</h2>
+
+<div class="colors">
+<div class="color-card black">
+<h3>BLACK</h3>
+<p>ROOT · GROUND</p>
+<p>Heritage, memory, belonging and the ground beneath us.</p>
 </div>
-<br><br>
+
+<div class="color-card red">
+<h3>RED</h3>
+<p>PULSE · BODY · VOICE</p>
+<p>Life, desire, courage, action and expression.</p>
+</div>
+
+<div class="color-card gold">
+<h3>GOLD</h3>
+<p>LIGHT · MEANING</p>
+<p>Warmth, gratitude, hope and the light we carry forward.</p>
+</div>
+</div>
+
+<div class="story-grid">
+<div class="story">
+<h3>BLACK ROOT</h3>
+<p>
+ตีนดำ — จากภูมิปัญญาผ้าทอไทลื้อ
+สู่การตีความร่วมสมัยว่าด้วยรากเหง้า
+ความทรงจำ และสิ่งที่ทำให้เรายืนหยัด
+</p>
+</div>
+
+<div class="story">
+<h3>RED NAILS</h3>
+<p>
+เล็บแดง — The Power to Act.
+พลังของการสัมผัส การสร้างสรรค์
+การลงมือทำ และการเปลี่ยนแปลงโลก
+</p>
+</div>
+
+<div class="story">
+<h3>RED LIPS</h3>
+<p>
+ริมฝีปากแดง — The Power to Speak.
+ความรัก ความปรารถนา เสียงของตัวเอง
+และสิทธิในการประกาศตัวตน
+</p>
+</div>
+
+<div class="story">
+<h3>GOLDEN LIGHT</h3>
+<p>
+แสงทอง — The Power of Meaning.
+แสงแห่งความอบอุ่น คุณค่า ความหวัง
+และการเริ่มต้นใหม่
+</p>
+</div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="eyebrow">FASHION · ART · SEASONAL STORIES</div>
+<h2>THE FESTIVE EDIT</h2>
+<div class="intro">
+Black, Red & Gold.
+A visual journal of fashion, beauty,
+celebration and the art of returning.
+</div>
+
 <div class="gallery" id="gallery-images"></div>
 </section>
 
-<section id="journal">
-<h2>JOURNAL</h2>
-<div class="intro">
-Sometimes, the journey is not about finding something new,
-but remembering who you are.
+<div class="manifesto">
+<div class="eyebrow">THE PHILOSOPHY</div>
+<h2>THE EARTH REMEMBERS.<br>THE BODY RESPONDS.<br>THE LIGHT REMAINS.</h2>
+<div class="gold-line"></div>
+<p>
+We come from the dark. We carry the fire.
+<br><br>
+กลับมาพบกัน เพื่อแลกเปลี่ยนพลัง
+แล้วออกเดินทางไปเริ่มต้นใหม่
+</p>
 </div>
-</section>
 
-<section id="contact">
-<h2>CONTACT</h2>
+<section id="journal">
+<div class="eyebrow">REFLECTIONS</div>
+<h2>THE ART OF RETURNING</h2>
 <div class="intro">
-Thank you for being here.
+Perhaps the most beautiful journeys
+are not about discovering somewhere new,
+but returning to what truly matters.
+<br><br>
+We return to our roots.
+We return to one another.
+We return to ourselves.
+<br><br>
+And then, we begin again.
 </div>
 </section>
 
 <footer>
-RETURNNOON · THE ART OF RETURNING
+RETURNNOON<br>
+THE ART OF RETURNING
+<br><br>
+BLACK · RED · GOLD
+<br>
+Rooted in Heritage. Connected by Love.
+Illuminated by Hope.
 </footer>
+
+<div class="lightbox" id="lightbox">
+<button id="prev" aria-label="Previous image">‹</button>
+<img id="enlarged" alt="RETURNNOON fashion gallery">
+<button id="next" aria-label="Next image">›</button>
+<button id="close" aria-label="Close gallery">×</button>
+</div>
 
 <script>
 const images = [
+"916670744_10163504037922091_1831640876093372554_n.jpg",
 "920415063_10163496044862091_93554785118104455_n.jpg",
-  "920579427_10163495986227091_6348765769498277676_n - Copy.jpg",
-  "921144235_10163496044732091_802971621672327860_n - Copy.jpg",
-  "921629600_10163502783132091_4818641054310793315_n - Copy.jpg",
-  "921629613_10163496138312091_825856873131375141_n - Copy.jpg",
-  "922611968_10163495986717091_7928810920396311859_n - Copy.jpg",
-  "924141263_10163496042427091_2958191623966132365_n - Copy.jpg",
-  "925199817_10163495983457091_7062330527860610209_n - Copy.jpg",
-  "925592435_10163495986737091_1302549068281436269_n.jpg",
-  "925876917_10163496041942091_3666206961840433530_n - Copy.jpg",
-  "926022775_10163496044837091_8404336566337427351_n - Copy.jpg",
-  "927808000_10163495986342091_8164746824542684290_n.jpg",
-  "927808532_10163496287937091_7372290827688728795_n.jpg",
-  "927808613_10163496045442091_8953706082523093587_n.jpg",
-  "927840532_10163496044747091_8859196645221839298_n.jpg",
-  "927884248_10163495986812091_6880023154251772492_n.jpg",
-  "927905419_10163495986412091_8450332032080741278_n.jpg",
-  "927905582_10163496288162091_7939417091596785200_n.jpg",
-  "927929654_10163495986262091_1189378670788248122_n.jpg",
-  "927965154_10163495986537091_2858560730833150288_n.jpg"
+"920579427_10163495986227091_6348765769498277676_n - Copy.jpg",
+"920640603_10163495986602091_256470334906988337_n - Copy.jpg",
+"921096505_10163504039497091_2628572709839538972_n.jpg",
+"921144235_10163496044732091_802971621672327860_n - Copy.jpg",
+"921629600_10163502783132091_4818641054310793315_n - Copy.jpg",
+"921629613_10163496138312091_825856873131375141_n - Copy.jpg",
+"922611968_10163495986717091_7928810920396311859_n - Copy.jpg",
+"924141220_10163504038817091_2955127287662919335_n.jpg",
+"924141263_10163496042427091_2958191623966132365_n - Copy.jpg",
+"925199817_10163495983457091_7062330527860610209_n - Copy.jpg",
+"925592435_10163495986737091_1302549068281436269_n.jpg",
+"925876917_10163496041942091_3666206961840433530_n - Copy.jpg",
+"926022775_10163496044837091_8404336566337427351_n - Copy.jpg",
+"927435932_10163504036472091_5450299132669221229_n.jpg",
+"927808000_10163495986342091_8164746824542684290_n.jpg",
+"927808532_10163496287937091_7372290827688728795_n.jpg",
+"927808613_10163496045442091_8953706082523093587_n.jpg",
+"927840532_10163496044747091_8859196645221839298_n.jpg",
+"927884248_10163495986812091_6880023154251772492_n.jpg",
+"927905419_10163495986412091_8450332032080741278_n.jpg",
+"927905582_10163496288162091_7939417091596785200_n.jpg",
+"927929654_10163495986262091_1189378670788248122_n.jpg",
+"927965154_10163495986537091_2858560730833150288_n.jpg"
 ];
 
 const gallery = document.getElementById("gallery-images");
+const lightbox = document.getElementById("lightbox");
+const enlarged = document.getElementById("enlarged");
+let current = 0;
 
-images.forEach((filename) => {
+images.forEach((filename, index) => {
+  const item = document.createElement("div");
+  item.className = "gallery-item";
+
   const img = document.createElement("img");
   img.src = filename;
-  img.alt = "RETURNNOON visual journal";
-  gallery.appendChild(img);
+  img.alt = "RETURNNOON fashion and festive visual journal";
+  img.loading = "lazy";
+
+  const caption = document.createElement("div");
+  caption.className = "caption";
+  caption.textContent = "RETURNNOON · VISUAL JOURNAL";
+
+  img.addEventListener("click", () => openImage(index));
+
+  item.append(img, caption);
+  gallery.appendChild(item);
 });
 
-  const lightbox = document.createElement("div");
-
-lightbox.style.cssText = `
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(25, 24, 22, 0.94);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  cursor: zoom-out;
-`;
-
-const enlargedImage = document.createElement("img");
-
-enlargedImage.style.cssText = `
-  max-width: 90%;
-  max-height: 90vh;
-  object-fit: contain;
-`;
-
-lightbox.appendChild(enlargedImage);
-document.body.appendChild(lightbox);
-
-gallery.querySelectorAll("img").forEach((img) => {
-  img.style.cursor = "zoom-in";
-
-  img.addEventListener("click", () => {
-    enlargedImage.src = img.src;
-    lightbox.style.display = "flex";
-  });
-});
-
-lightbox.addEventListener("click", () => {
-  lightbox.style.display = "none";
-});
-  
-let currentImageIndex = 0;
-
-const galleryImages = Array.from(
-  gallery.querySelectorAll("img")
-);
-
-const prevButton = document.createElement("button");
-prevButton.textContent = "‹";
-const nextButton = document.createElement("button");
-nextButton.textContent = "›";
-const closeButton = document.createElement("button");
-closeButton.textContent = "×";
-
-[prevButton, nextButton, closeButton].forEach((button) => {
-  button.style.cssText = `
-    position: absolute;
-    background: transparent;
-    color: white;
-    border: none;
-    font-size: 42px;
-    cursor: pointer;
-    padding: 15px;
-  `;
-});
-
-prevButton.style.left = "20px";
-nextButton.style.right = "20px";
-closeButton.style.top = "10px";
-closeButton.style.right = "20px";
-
-lightbox.append(prevButton, nextButton, closeButton);
-
-function showImage(index) {
-  currentImageIndex =
-    (index + galleryImages.length) % galleryImages.length;
-  enlargedImage.src = galleryImages[currentImageIndex].src;
+function openImage(index) {
+  current = (index + images.length) % images.length;
+  enlarged.src = images[current];
+  lightbox.classList.add("open");
 }
 
-galleryImages.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    showImage(index);
-  });
+function closeImage() {
+  lightbox.classList.remove("open");
+}
+
+function moveImage(step) {
+  openImage(current + step);
+}
+
+document.getElementById("prev").onclick = e => {
+  e.stopPropagation();
+  moveImage(-1);
+};
+
+document.getElementById("next").onclick = e => {
+  e.stopPropagation();
+  moveImage(1);
+};
+
+document.getElementById("close").onclick = closeImage;
+
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) closeImage();
 });
 
-prevButton.addEventListener("click", (event) => {
-  event.stopPropagation();
-  showImage(currentImageIndex - 1);
-});
-
-nextButton.addEventListener("click", (event) => {
-  event.stopPropagation();
-  showImage(currentImageIndex + 1);
-});
-
-closeButton.addEventListener("click", (event) => {
-  event.stopPropagation();
-  lightbox.style.display = "none";
-});
-
-document.addEventListener("keydown", (event) => {
-  if (lightbox.style.display !== "flex") return;
-
-  if (event.key === "ArrowLeft") showImage(currentImageIndex - 1);
-  if (event.key === "ArrowRight") showImage(currentImageIndex + 1);
-  if (event.key === "Escape") lightbox.style.display = "none";
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("open")) return;
+  if (e.key === "ArrowLeft") moveImage(-1);
+  if (e.key === "ArrowRight") moveImage(1);
+  if (e.key === "Escape") closeImage();
 });
 </script>
 
